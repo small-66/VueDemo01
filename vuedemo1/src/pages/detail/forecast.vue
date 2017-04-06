@@ -12,7 +12,7 @@
     			购买数量：
     		</div>
     		<div class="sales-board-line-right">
-    		
+    		   <counter ></counter>
     		</div>
     	</div>
     	<div class="sales-board-line">
@@ -20,7 +20,7 @@
     			产品类型：
     		</div>
     		<div class="sales-board-line-right">
-    		
+    		      <selections-one :selections-one="porductTypes"></selections-one>
     		</div>
     	</div>
     	<div class="sales-board-line">
@@ -77,9 +77,31 @@
 </template>
 
 <script>
+import selectionsOne from '../../components/base/selection_1'
+import counter from '../../components/base/counter'
+
 export default {
+    components:{
+        selectionsOne,
+        counter
+    },
     data () {
-        return {}    
+        return {
+            porductTypes:[
+                {
+                    label: '入门版',
+                    value: 0
+                },
+                {
+                    label: '中级版',
+                    value: 1
+                },
+                {
+                    label: '高级版',
+                    value: 2
+                }
+            ]
+        }   
     }
 }
 </script>

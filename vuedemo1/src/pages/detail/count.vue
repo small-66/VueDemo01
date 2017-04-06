@@ -12,12 +12,12 @@
     			购买数量：
     		</div>
     		<div class="sales-board-line-right">
-    		
+    		  <counter ></counter>
     		</div>
     	</div>
     	<div class="sales-board-line">
     		<div class="sales-board-line-left">
-    			产品类型：
+    			媒介：
     		</div>
     		<div class="sales-board-line-right">
     		  <selection1 :selections1="porductTypes"></selection1>
@@ -77,28 +77,31 @@
 </template>
 
 <script>
-import selection1 from '../../components/selection_all'
+import selection1 from '../../components/base/selection_all'
+import counter from '../../components/base/counter'
 export default {
     components:{
+        counter,
         selection1
     },
     data () {
         return {
             porductTypes:[
                 {
-                    label: '入门版',
-                    value: 0,
-                    flag: false
+                    label: '纸质报告',
+                    value: 0
                 },
                 {
-                    label: '中级版',
-                    value: 1,
-                    flag: false
+                    label: 'pdf',
+                    value: 1
                 },
                 {
-                    label: '高级版',
-                    value: 2,
-                    flag: false
+                    label: '页面报告',
+                    value: 2
+                },
+                {
+                    label: '邮件',
+                    value: 3
                 }
             ]
         }    

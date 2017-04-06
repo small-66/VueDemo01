@@ -1,24 +1,31 @@
 {
-	"getNewsList": [
-		{
-	        "title": "新闻条目1新闻条目1新闻条目1新闻条目1新闻条目1新闻条目1新闻条目1新闻条目1新闻条目1",
-	        "url": "http://starcraft.com"
-        },
-      	{
-	        "title": "新闻条目2",
-	        "url": "http://starcraft.com"
-        },
-        {
-	        "title": "新闻条目3",
-	        "url": "http://starcraft.com"
-        },
-        {
-	        "title": "新闻条目4",
-	        "url": "http://starcraft.com"
-        }
-	],
-	"login": {
-		"username": "liuyang@",
-		"userId": 123321
-	}
+  "getNewsList": [
+    {
+      "title": "新闻条目1新闻条目1新闻条目1新闻条目1新闻条目1新闻条目1新闻条目1新闻条目1新闻条目1",
+      "url": "http://starcraft.com"
+    },
+    {
+      "title": "新闻条目2",
+      "url": "http://starcraft.com"
+    },
+    {
+      "title": "新闻条目3",
+      "url": "http://starcraft.com"
+    },
+    {
+      "title": "新闻条目4",
+      "url": "http://starcraft.com"
+    }
+  ],
+  "login": {
+    "username": "liuyang@",
+    "userId": 123321
+  },
+  "getP": {
+    "rem": 587
+  },
+  "createOrder": {
+    "orderId": "568ss5"
+  },
+  "checkOrder": {}
 }

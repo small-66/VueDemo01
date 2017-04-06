@@ -9,18 +9,18 @@
     <div class="sale-board-form">
     	<div class="sales-board-line">
     		<div class="sales-board-line-left">
-    			购买数量：
+    			产品类型：
     		</div>
     		<div class="sales-board-line-right">
-    		
+                <selections-one :selections-one="porductTypes1"></selections-one>
     		</div>
     	</div>
     	<div class="sales-board-line">
     		<div class="sales-board-line-left">
-    			产品类型：
+    			通用地区：
     		</div>
     		<div class="sales-board-line-right">
-    		
+    		    <vselected :selections="porductTypes" ></vselected>  
     		</div>
     	</div>
     	<div class="sales-board-line">
@@ -77,9 +77,52 @@
 </template>
 
 <script>
+import selectionsOne from '../../components/base/selection_1'
+import vselected from '../../components/base/selection'
 export default {
+    components:{
+        vselected,
+        selectionsOne
+    },
     data () {
-        return {}    
+        return {
+            porductTypes1:[
+                {
+                    label: '红色版',
+                    value: 0
+                },
+                {
+                    label: '黄色版',
+                    value: 1
+                },
+                {
+                    label: '蓝色版',
+                    value: 2
+                },
+                {
+                    label: '绿色版',
+                    value: 3
+                }
+            ],
+            porductTypes:[
+                {
+                    label: '上海',
+                    value: 0
+                },
+                {
+                    label: '广州',
+                    value: 1
+                },
+                {
+                    label: '深圳',
+                    value: 2
+                },
+                {
+                    label: '北京',
+                    value: 3
+                }
+            ]
+        }    
     }
 }
 </script>
