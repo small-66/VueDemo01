@@ -5,7 +5,7 @@
       <div class="button" @click="checkStatus">支付成功</div>
       <div class="button" @click="checkStatus">支付失败</div>
     </t-dialog>
-    <t-dialog :is-show="isShowSuccessDialog"  @on-close="closeDialog('isShowSuccessDialog')">购买成功</t-dialog>
+    <t-dialog :is-show="isShowSuccessDialog" >购买成功</t-dialog>
     <t-dialog :is-show="isShowFailDialog">购买失败</t-dialog>
 	</div>
 </template>
@@ -39,6 +39,8 @@
               orderId : this.orderId
           }).then((res)=>{
             this.isShowSuccessDialog = true
+            this.$emit('on-close-check-dialog')
+
           },(error)=>{
             this.isShowFailDialog = true
           })

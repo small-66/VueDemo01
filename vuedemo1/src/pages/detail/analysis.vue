@@ -103,7 +103,7 @@
         <div class="button buy-dialog-btn" @click="confirmBuy">确认购买</div>
      </my-dialog>
     <my-dialog :is-show="isShowErrDialog" @on-close="hideErrDialog">支付失败</my-dialog>
-    <my-check :is-show-check-dialog="isShowCheckDialog"></my-check>
+    <my-check :is-show-check-dialog="isShowCheckDialog" :orderId="orderId" @on-close-check-dialog="hideCheckOrder"></my-check>
   </div>
 </template>
 
@@ -178,8 +178,9 @@ export default {
             isShowPayDialog: false,
             bankId: null,
             isShowCheckDialog: false,
-            isShowErrDialog: false
-
+            isShowErrDialog: false,
+            isShowCheckOrder: false,
+            orderId : null
         }
     },
     methods: {
@@ -214,6 +215,10 @@ export default {
         },
         hideErrDialog(){
             this.isShowErrDialog = false
+        },
+        hideCheckOrder(){
+            this.isShowCheckOrder = false
+
         },
         confirmBuy(){
             let buyVersionsArray = _.map(this.version, (item)=> {
