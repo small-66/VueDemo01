@@ -5,8 +5,8 @@
       <div class="button" @click="checkStatus">支付成功</div>
       <div class="button" @click="checkStatus">支付失败</div>
     </t-dialog>
-    <t-dialog :is-show="isShowSuccessDialog" >购买成功</t-dialog>
-    <t-dialog :is-show="isShowFailDialog">购买失败</t-dialog>
+    <t-dialog :is-show="isShowSuccessDialog" @on-close="toOrderList">购买成功</t-dialog>
+    <t-dialog :is-show="isShowFailDialog" @on-close="toOrderList">购买失败</t-dialog>
 	</div>
 </template>
 <script>
@@ -44,6 +44,9 @@
           },(error)=>{
             this.isShowFailDialog = true
           })
+      },
+      toOrderList(){
+          this.$router.push({path: '/orderList'})
       }
     }
 }

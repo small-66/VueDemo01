@@ -26,7 +26,7 @@
         <div class="index-right">
             <slide-show :slides="slides" :inv="slideSpeed"></slide-show>
             <div class="index-board-list">
-                <div 
+                <div
                 class="index-board-item"
                 v-for="(item,index) in boardList"
                 :class="[{'line-last' : index %2 !==0},'index-board-'+item.id]"
@@ -35,7 +35,7 @@
                         <h2>{{item.title}}</h2>
                         <p>{{item.description}}</p>
                         <div class="index-board-button">
-                            <a href="" class="button">立即购买</a>
+                            <a href="detail/analysis" class="button">立即购买</a>
                         </div>
                     </div>
                 </div>
@@ -111,7 +111,7 @@ export default {
                 }
             },
             newsList:[
-               
+
             ],
             boardList:[
                 {
@@ -163,7 +163,7 @@ export default {
             ]
 		}
 	}
-}	
+}
 </script>
 
 <style >
@@ -179,7 +179,7 @@ export default {
 }
 .index-right {
     float: right;
-    width: 900px;   
+    width: 900px;
 }
 .index-left-block {
     margin: 15px;
@@ -251,21 +251,21 @@ export default {
     color: #fff;
 }
 .index-board-car .index-board-item-inner{
-    background: url(../assets/images/1.jpg) no-repeat; 
+    background: url(../assets/images/1.jpg) no-repeat;
     background-size: 120px;
 }
 
 .index-board-earth .index-board-item-inner{
-    background: url(../assets/images/2.jpg) no-repeat; 
+    background: url(../assets/images/2.jpg) no-repeat;
     background-size: 120px;
 }
 .index-board-loud .index-board-item-inner{
-    background: url(../assets/images/3.jpg) no-repeat; 
+    background: url(../assets/images/3.jpg) no-repeat;
     background-size: 120px;
 }
 .index-board-mount .index-board-item-inner{
     background: url(../assets/images/4.jpg) no-repeat;
-    background-size: 120px; 
+    background-size: 120px;
 }
 .new-item{
     display: inline-block;

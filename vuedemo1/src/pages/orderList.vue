@@ -18,12 +18,26 @@
         <input type="text" v-model.lazy="query" class="order-query"/>
       </div>
     </div>
+    <div class="order-list-table">
+      <table>
+        <tr>
+          <th v-for="head in tableHeads"
+          @click="changeOrder(head)"
+          :class="{active: head.active}"
+          >{{ head.label }}</th>
+        </tr>
+        <tr v-for="item in tableData">
+          <td v-for="head in tableHeads">{{ item[head.key] }} </td>
+        </tr>
+      </table>
+    </div>
   </div>
 </template>
 
 <script>
 import vSelection from '../components/base/selection'
 import vDatepicker  from '../components/base/datepicker'
+import _ from 'lodash'
 export default {
     components: {
       vSelection,
@@ -52,25 +66,89 @@ export default {
           label: '广告发布',
           value: 3
         }
-      ]
+      ],
+      tableHeads:[
+        {
+            label: '订单号',
+              key: 'orderId'
+        },
+        {
+          label: '购买产品',
+            key: 'product'
+        },
+        {
+          label: '版本类型',
+            key: 'version'
+        },
+        {
+          label: '有效时间',
+            key: 'orderId'
+        },
+        {
+          label: '数量',
+          key: 'buyNum'
+        },
+        {
+          label: '总价',
+          key: 'amount'
+        }
+      ],
+      tableData: [],
+      currentOrder: 'desc'
 		}
 	},
   watch:{
         query(){
             console.log( 'on query change')
+          this.getTableData()
         }
   },
   methods:{
     productChange(obj){
       this.productId = obj.value
       console.log(this.productId)
+      this.getTableData()
     },
     changeStartDate(date){
       this.startDate = date
+      this.getTableData()
     },
     changeEndDate(date){
       this.endDate = date
+      this.getTableData()
+    },
+    getTableData(){
+        let reParam = {
+            query : this.query,
+            startDate: this.startDate,
+            endDate : this.endDate,
+            productId : this.productId
+        }
+        this.$http.get('/api/getOrderList',reParam).then(
+          (res) => {
+            this.tableData = res.data.list
+          },
+          (err) => {
+
+          }
+        )
+    },
+    changeOrder(headItem){
+        this.tableHeads.map((item)=>{
+            item.active = false
+          return item
+        })
+        headItem.active = true
+        if(this.currentOrder === 'asc'){
+            this.currentOrder = 'desc'
+        }else if(this.currentOrder === 'desc'){
+          this.currentOrder = 'asc'
+        }
+        this.tableData = _.orderBy(this.tableData,headItem.key,this.currentOrder)
     }
+  },
+  mounted (){
+    this.getTableData()
   }
 }
 </script>
@@ -96,5 +174,27 @@ export default {
   }
   .order-list-option:first-child{
     padding-left: 0;
+  }
+  .order-list-table {
+    margin-top: 20px;
+  }
+  .order-list-table table {
+    width: 100%;
+    background: #fff;
+  }
+  .order-list-table td,
+  .order-list-table th {
+    border: 1px solid #e3e3e3;
+    text-align: center;
+    padding: 10px 0;
+  }
+  .order-list-table th {
+    background: #4fc08d;
+    color: #fff;
+    border: 1px solid #4fc08d;
+    cursor: pointer;
+  }
+  .order-list-table th.active {
+    background: #35495e;
   }
 </style>
