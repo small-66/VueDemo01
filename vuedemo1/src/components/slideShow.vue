@@ -106,6 +106,8 @@
     height: 30px;
     text-align: left;
     padding-left:15px;
+    line-height: 30px;
+    font-weight: 800;
 }
 .slide-img{
     width: 100%;

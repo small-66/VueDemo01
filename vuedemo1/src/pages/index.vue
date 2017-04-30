@@ -221,6 +221,7 @@ export default {
 .index-board-item-inner {
     min-height: 125px;
     padding-left: 120px;
+    text-align: center;
 }
 
 .index-board-item h2{
